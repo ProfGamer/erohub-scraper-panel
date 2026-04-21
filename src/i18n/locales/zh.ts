@@ -162,6 +162,37 @@ export const zh = {
     mediaSection: "媒体（{{count}}）",
     viewOnX: "在 X 上查看",
   },
+  tasks: {
+    list: {
+      fetchAllActive: "抓取所有活跃",
+      starting: "启动中...",
+      fetching: "抓取中...",
+      empty: "暂无任务。",
+    },
+    progress: {
+      status: {
+        pending: "等待中",
+        running: "运行中",
+        completed: "已完成",
+        error: "错误",
+      },
+      completedItems: "{{count}} 项",
+    },
+  },
+  fetchActivity: {
+    phases: {
+      downloading: "下载中",
+      processing: "处理元数据",
+      saving: "写入数据库",
+      done: "完成",
+    },
+    phaseFilesSuffix: "（{{count}} 个文件）",
+    phaseItemsSuffix: "（{{count}} 项）",
+    headerOne: "正在抓取 1 位作者",
+    headerMany: "正在抓取 {{count}} 位作者",
+    filesDownloaded: "已下载 {{count}} 个文件",
+    complete: "抓取完成 — 共获取 {{count}} 项",
+  },
 } as const;
 
 // Type check: ensure zh has the same keys/structure as en

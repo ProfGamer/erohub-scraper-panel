@@ -160,4 +160,35 @@ export const en = {
     mediaSection: "Media ({{count}})",
     viewOnX: "View on X",
   },
+  tasks: {
+    list: {
+      fetchAllActive: "Fetch All Active",
+      starting: "Starting...",
+      fetching: "Fetching...",
+      empty: "No tasks yet.",
+    },
+    progress: {
+      status: {
+        pending: "pending",
+        running: "running",
+        completed: "completed",
+        error: "error",
+      },
+      completedItems: "{{count}} items",
+    },
+  },
+  fetchActivity: {
+    phases: {
+      downloading: "Downloading",
+      processing: "Processing metadata",
+      saving: "Saving to database",
+      done: "Done",
+    },
+    phaseFilesSuffix: " ({{count}} files)",
+    phaseItemsSuffix: " ({{count}} items)",
+    headerOne: "Fetching 1 author",
+    headerMany: "Fetching {{count}} authors",
+    filesDownloaded: "{{count}} files downloaded",
+    complete: "Fetch complete — {{count}} items fetched",
+  },
 } as const;
