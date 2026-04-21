@@ -66,6 +66,38 @@ export const zh = {
       title: "设置",
     },
   },
+  groups: {
+    list: {
+      loading: "加载分组中...",
+      empty: "暂无分组。",
+      stats: { authors: "作者", posts: "推文", media: "媒体" },
+      fetchAll: "全部抓取",
+      deleteConfirm: "删除分组 \"{{name}}\" 吗？",
+    },
+    detail: {
+      fetchAll: "全部抓取",
+      groupName: "分组名称",
+      descriptionPlaceholder: "描述（可选）",
+      stats: { authors: "作者", posts: "推文", media: "媒体" },
+      authors: "作者",
+      assignExisting: "+ 指派现有",
+      newAuthor: "+ 新建作者",
+      usernamePlaceholder: "用户名（例如 @MixMico3）",
+      addToGroup: "加入分组",
+      adding: "添加中...",
+      addFailed: "失败 — 用户名可能已存在。",
+      ungroupedHint: "未分组作者 — 点击加入此分组",
+      noUngrouped: "没有可用的未分组作者。",
+      noAuthors: "此分组暂无作者。",
+      removeFromGroup: "从分组移除",
+    },
+    form: {
+      title: "新建分组",
+      namePlaceholder: "分组名称",
+      descriptionPlaceholder: "描述（可选）",
+      create: "创建",
+    },
+  },
 } as const;
 
 // Type check: ensure zh has the same keys/structure as en
