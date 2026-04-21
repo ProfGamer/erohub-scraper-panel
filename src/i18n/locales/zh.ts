@@ -98,6 +98,46 @@ export const zh = {
       create: "创建",
     },
   },
+  authors: {
+    list: {
+      sortBy: "排序",
+      sort: {
+        name: "姓名",
+        followers: "粉丝",
+        media: "媒体",
+        posts: "推文",
+        recent: "最近抓取",
+        status: "状态",
+      },
+      count: "{{count}} 位作者",
+      empty: "暂无作者。",
+    },
+    card: {
+      status: {
+        active: "活跃",
+        paused: "暂停",
+        error: "错误",
+      },
+      stats: {
+        followers: "粉丝",
+        likes: "点赞",
+        posts: "推文",
+        media: "媒体",
+      },
+      lastFetched: "最近抓取：{{when}}",
+      fetchNow: "立即抓取",
+      fetching: "抓取中...",
+      pause: "暂停",
+      resume: "恢复",
+    },
+    form: {
+      title: "添加作者",
+      usernamePlaceholder: "用户名（例如 elonmusk）",
+      displayNamePlaceholder: "显示名称（可选）",
+      noGroup: "无分组",
+      addFailed: "添加作者失败。用户名可能已存在。",
+    },
+  },
 } as const;
 
 // Type check: ensure zh has the same keys/structure as en

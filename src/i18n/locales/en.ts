@@ -96,4 +96,44 @@ export const en = {
       create: "Create",
     },
   },
+  authors: {
+    list: {
+      sortBy: "Sort by",
+      sort: {
+        name: "Name",
+        followers: "Followers",
+        media: "Media",
+        posts: "Posts",
+        recent: "Last Fetched",
+        status: "Status",
+      },
+      count: "{{count}} authors",
+      empty: "No authors yet.",
+    },
+    card: {
+      status: {
+        active: "active",
+        paused: "paused",
+        error: "error",
+      },
+      stats: {
+        followers: "Followers",
+        likes: "Likes",
+        posts: "Posts",
+        media: "Media",
+      },
+      lastFetched: "Last fetched: {{when}}",
+      fetchNow: "Fetch Now",
+      fetching: "Fetching...",
+      pause: "Pause",
+      resume: "Resume",
+    },
+    form: {
+      title: "Add Author",
+      usernamePlaceholder: "Username (e.g. elonmusk)",
+      displayNamePlaceholder: "Display name (optional)",
+      noGroup: "No group",
+      addFailed: "Failed to add author. Username may already exist.",
+    },
+  },
 } as const;
