@@ -201,6 +201,7 @@ export const zh = {
     cookiesDirectory: "Cookies 目录",
   },
   auth: {
+    redirectingToLogin: "正在跳转登录...",
     callback: {
       loginFailed: "登录失败",
       backToHome: "返回首页",

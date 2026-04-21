@@ -199,6 +199,7 @@ export const en = {
     cookiesDirectory: "Cookies Directory",
   },
   auth: {
+    redirectingToLogin: "Redirecting to login...",
     callback: {
       loginFailed: "Login Failed",
       backToHome: "Back to Home",
