@@ -138,6 +138,30 @@ export const zh = {
       addFailed: "添加作者失败。用户名可能已存在。",
     },
   },
+  filterBar: {
+    types: {
+      all: "所有类型",
+      image: "图片",
+      video: "视频",
+      gif: "GIF",
+    },
+    allGroups: "所有分组",
+    allAuthors: "所有作者",
+  },
+  mediaGrid: {
+    select: "选择",
+    cancel: "取消",
+    selectedCount: "已选 {{count}} 项",
+    deleteSelected: "删除所选",
+    deleting: "删除中...",
+    fileCount: "{{count}} 个文件",
+    empty: "暂无媒体。",
+    videoBadge: "视频",
+  },
+  mediaPreview: {
+    mediaSection: "媒体（{{count}}）",
+    viewOnX: "在 X 上查看",
+  },
 } as const;
 
 // Type check: ensure zh has the same keys/structure as en

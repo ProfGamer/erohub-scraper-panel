@@ -136,4 +136,28 @@ export const en = {
       addFailed: "Failed to add author. Username may already exist.",
     },
   },
+  filterBar: {
+    types: {
+      all: "All types",
+      image: "Images",
+      video: "Videos",
+      gif: "GIFs",
+    },
+    allGroups: "All groups",
+    allAuthors: "All authors",
+  },
+  mediaGrid: {
+    select: "Select",
+    cancel: "Cancel",
+    selectedCount: "{{count}} selected",
+    deleteSelected: "Delete Selected",
+    deleting: "Deleting...",
+    fileCount: "{{count}} files",
+    empty: "No media found.",
+    videoBadge: "VIDEO",
+  },
+  mediaPreview: {
+    mediaSection: "Media ({{count}})",
+    viewOnX: "View on X",
+  },
 } as const;
