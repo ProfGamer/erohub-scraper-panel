@@ -191,4 +191,24 @@ export const en = {
     filesDownloaded: "{{count}} files downloaded",
     complete: "Fetch complete — {{count}} items fetched",
   },
+  settings: {
+    loading: "Loading...",
+    fetchInterval: "Fetch Interval (minutes)",
+    maxConcurrent: "Max Concurrent Fetches",
+    dataDirectory: "Data Directory",
+    cookiesDirectory: "Cookies Directory",
+  },
+  auth: {
+    callback: {
+      loginFailed: "Login Failed",
+      backToHome: "Back to Home",
+    },
+    unauthorized: {
+      title: "Access Denied",
+      loggedInAs: "Logged in as: {{name}}",
+      unknownUser: "Unknown",
+      roleRequired: "You need the <0>bot_admin</0> role to access this panel.",
+      logoutAndRetry: "Logout & Try Another Account",
+    },
+  },
 } as const;

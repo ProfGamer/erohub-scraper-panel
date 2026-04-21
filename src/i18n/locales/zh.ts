@@ -193,6 +193,26 @@ export const zh = {
     filesDownloaded: "已下载 {{count}} 个文件",
     complete: "抓取完成 — 共获取 {{count}} 项",
   },
+  settings: {
+    loading: "加载中...",
+    fetchInterval: "抓取间隔（分钟）",
+    maxConcurrent: "最大并发抓取数",
+    dataDirectory: "数据目录",
+    cookiesDirectory: "Cookies 目录",
+  },
+  auth: {
+    callback: {
+      loginFailed: "登录失败",
+      backToHome: "返回首页",
+    },
+    unauthorized: {
+      title: "访问被拒绝",
+      loggedInAs: "当前登录：{{name}}",
+      unknownUser: "未知",
+      roleRequired: "需要 <0>bot_admin</0> 角色才能访问此面板。",
+      logoutAndRetry: "退出登录并尝试其他账号",
+    },
+  },
 } as const;
 
 // Type check: ensure zh has the same keys/structure as en
