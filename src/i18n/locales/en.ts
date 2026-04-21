@@ -37,4 +37,31 @@ export const en = {
     videoBadge: "VIDEO",
     postsMediaShort: "{{posts}}p / {{media}}m",
   },
+  pages: {
+    dashboard: {
+      title: "Dashboard",
+    },
+    authors: {
+      title: "Authors",
+      addAuthor: "+ Add Author",
+    },
+    groups: {
+      title: "Groups",
+      newGroup: "+ New Group",
+    },
+    browse: {
+      title: "Browse",
+    },
+    posts: {
+      title: "Posts",
+      totalCount: "{{count}} posts",
+      emptyState: "No posts found.",
+    },
+    tasks: {
+      title: "Tasks",
+    },
+    settings: {
+      title: "Settings",
+    },
+  },
 } as const;

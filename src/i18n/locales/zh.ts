@@ -39,6 +39,33 @@ export const zh = {
     videoBadge: "视频",
     postsMediaShort: "{{posts}}推 / {{media}}媒",
   },
+  pages: {
+    dashboard: {
+      title: "仪表盘",
+    },
+    authors: {
+      title: "作者",
+      addAuthor: "+ 添加作者",
+    },
+    groups: {
+      title: "分组",
+      newGroup: "+ 新建分组",
+    },
+    browse: {
+      title: "浏览",
+    },
+    posts: {
+      title: "推文",
+      totalCount: "{{count}} 条推文",
+      emptyState: "暂无推文。",
+    },
+    tasks: {
+      title: "任务",
+    },
+    settings: {
+      title: "设置",
+    },
+  },
 } as const;
 
 // Type check: ensure zh has the same keys/structure as en
