@@ -1,0 +1,25 @@
+export const en = {
+  common: {
+    save: "Save",
+    cancel: "Cancel",
+    delete: "Delete",
+    edit: "Edit",
+    loading: "Loading...",
+    add: "Add",
+    remove: "Remove",
+    confirm: "Confirm",
+  },
+  sidebar: {
+    dashboard: "Dashboard",
+    groups: "Groups",
+    authors: "Authors",
+    browse: "Browse",
+    posts: "Posts",
+    tasks: "Tasks",
+    settings: "Settings",
+    nsfw: "NSFW",
+    sfw: "SFW",
+    themeMode: "{{theme}} mode",
+    language: "中文 / English",
+  },
+} as const;
