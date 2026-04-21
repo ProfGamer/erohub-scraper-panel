@@ -24,6 +24,21 @@ export const zh = {
     themeMode: "{{theme}} 模式",
     language: "中文 / English",
   },
+  dashboard: {
+    stats: {
+      groups: "分组",
+      authors: "作者",
+      posts: "推文",
+      mediaFiles: "媒体文件",
+    },
+    topAuthors: "顶级作者",
+    period: { "1d": "24时", "1w": "7天", "1m": "30天", all: "全部" },
+    noDataForPeriod: "当前区间暂无数据",
+    latestMedia: "最新媒体",
+    storage: "存储",
+    videoBadge: "视频",
+    postsMediaShort: "{{posts}}推 / {{media}}媒",
+  },
 } as const;
 
 // Type check: ensure zh has the same keys/structure as en

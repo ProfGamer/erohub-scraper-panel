@@ -22,4 +22,19 @@ export const en = {
     themeMode: "{{theme}} mode",
     language: "中文 / English",
   },
+  dashboard: {
+    stats: {
+      groups: "Groups",
+      authors: "Authors",
+      posts: "Posts",
+      mediaFiles: "Media Files",
+    },
+    topAuthors: "Top Authors",
+    period: { "1d": "24H", "1w": "7D", "1m": "30D", all: "All" },
+    noDataForPeriod: "No data for this period",
+    latestMedia: "Latest Media",
+    storage: "Storage",
+    videoBadge: "VIDEO",
+    postsMediaShort: "{{posts}}p / {{media}}m",
+  },
 } as const;
