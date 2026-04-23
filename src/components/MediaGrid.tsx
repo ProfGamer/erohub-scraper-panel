@@ -52,6 +52,7 @@ export default function MediaGrid({ type, authorId, groupId, focusedIndex = -1, 
     onSuccess: () => {
       setSelected(new Set());
       queryClient.invalidateQueries({ queryKey: ["media"] });
+      queryClient.invalidateQueries({ queryKey: ["stats"] });
     },
   });
 
@@ -108,7 +109,12 @@ export default function MediaGrid({ type, authorId, groupId, focusedIndex = -1, 
           <>
             <span className="text-sm" style={{ color: "var(--text-muted)" }}>{t("mediaGrid.selectedCount", { count: selected.size })}</span>
             <button
-              onClick={() => deleteMutation.mutate(Array.from(selected))}
+              onClick={() => {
+                const msg = t("mediaGrid.deleteConfirm", { count: selected.size });
+                if (window.confirm(msg)) {
+                  deleteMutation.mutate(Array.from(selected));
+                }
+              }}
               disabled={deleteMutation.isPending}
               className="text-sm px-3 py-1.5 rounded-lg text-white disabled:opacity-50"
               style={{ background: "var(--badge-error-text)" }}
