@@ -56,6 +56,12 @@ export const en = {
       title: "Posts",
       totalCount: "{{count}} posts",
       emptyState: "No posts found.",
+      select: "Select",
+      cancel: "Cancel",
+      selectedCount: "{{count}} selected",
+      deleteSelected: "Delete Selected",
+      deleting: "Deleting...",
+      deleteConfirm: "Delete {{count}} posts and all their media files?",
     },
     tasks: {
       title: "Tasks",
@@ -155,6 +161,7 @@ export const en = {
     fileCount: "{{count}} files",
     empty: "No media found.",
     videoBadge: "VIDEO",
+    deleteConfirm: "Delete {{count}} media files?",
   },
   mediaPreview: {
     mediaSection: "Media ({{count}})",

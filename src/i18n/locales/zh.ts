@@ -58,6 +58,12 @@ export const zh = {
       title: "推文",
       totalCount: "{{count}} 条推文",
       emptyState: "暂无推文。",
+      select: "选择",
+      cancel: "取消",
+      selectedCount: "已选 {{count}} 条",
+      deleteSelected: "删除所选",
+      deleting: "删除中...",
+      deleteConfirm: "确认删除 {{count}} 条推文及其所有媒体文件？",
     },
     tasks: {
       title: "任务",
@@ -157,6 +163,7 @@ export const zh = {
     fileCount: "{{count}} 个文件",
     empty: "暂无媒体。",
     videoBadge: "视频",
+    deleteConfirm: "确认删除 {{count}} 个媒体文件？",
   },
   mediaPreview: {
     mediaSection: "媒体（{{count}}）",
