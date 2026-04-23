@@ -1,7 +1,7 @@
-import { useInfiniteQuery } from "@tanstack/react-query";
+import { useInfiniteQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { useCallback, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { fetchPosts } from "../api/media";
+import { deletePostBatch, fetchPosts } from "../api/media";
 import FilterBar from "../components/FilterBar";
 import MasonryGrid from "../components/MasonryGrid";
 import MediaPreview from "../components/MediaPreview";
@@ -23,6 +23,30 @@ export default function PostsPage() {
   const [numCols, setNumCols] = useState(2);
   const [preview, setPreview] = useState<PreviewState | null>(null);
   const containerRef = useRef<HTMLDivElement>(null);
+
+  const queryClient = useQueryClient();
+  const [selectMode, setSelectMode] = useState(false);
+  const [selected, setSelected] = useState<Set<string>>(new Set());
+
+  const toggleSelect = (id: string) => {
+    setSelected((prev) => {
+      const next = new Set(prev);
+      if (next.has(id)) next.delete(id); else next.add(id);
+      return next;
+    });
+  };
+
+  const exitSelectMode = () => { setSelectMode(false); setSelected(new Set()); };
+
+  const deleteMutation = useMutation({
+    mutationFn: (ids: string[]) => deletePostBatch(ids),
+    onSuccess: () => {
+      exitSelectMode();
+      queryClient.invalidateQueries({ queryKey: ["posts"] });
+      queryClient.invalidateQueries({ queryKey: ["media"] });
+      queryClient.invalidateQueries({ queryKey: ["stats"] });
+    },
+  });
 
   const { data, isLoading, hasNextPage, fetchNextPage, isFetchingNextPage } = useInfiniteQuery({
     queryKey: ["posts", filters],
@@ -129,9 +153,40 @@ export default function PostsPage() {
     <div>
       <div className="flex items-center justify-between mb-6">
         <h1 className="text-2xl font-bold" style={{ color: "var(--text-primary)" }}>{t("pages.posts.title")}</h1>
-        {data && <span className="text-sm" style={{ color: "var(--text-muted)" }}>{t("pages.posts.totalCount", { count: data.pages[0]?.total ?? 0 })}</span>}
+        <div className="flex items-center gap-2">
+          <button
+            onClick={() => selectMode ? exitSelectMode() : setSelectMode(true)}
+            className={`text-sm px-3 py-1.5 rounded-lg border transition-colors ${selectMode ? "text-white" : ""}`}
+            style={
+              selectMode
+                ? { background: "var(--gradient-primary)", borderColor: "transparent", color: "#fff" }
+                : { background: "var(--bg-surface)", color: "var(--text-secondary)", borderColor: "var(--border-primary)" }
+            }
+          >
+            {selectMode ? t("pages.posts.cancel") : t("pages.posts.select")}
+          </button>
+          {selected.size > 0 && (
+            <>
+              <span className="text-sm" style={{ color: "var(--text-muted)" }}>{t("pages.posts.selectedCount", { count: selected.size })}</span>
+              <button
+                onClick={() => {
+                  const msg = t("pages.posts.deleteConfirm", { count: selected.size });
+                  if (window.confirm(msg)) {
+                    deleteMutation.mutate(Array.from(selected));
+                  }
+                }}
+                disabled={deleteMutation.isPending}
+                className="text-sm px-3 py-1.5 rounded-lg text-white disabled:opacity-50"
+                style={{ background: "var(--badge-error-text)" }}
+              >
+                {deleteMutation.isPending ? t("pages.posts.deleting") : t("pages.posts.deleteSelected")}
+              </button>
+            </>
+          )}
+          {data && <span className="text-sm" style={{ color: "var(--text-muted)" }}>{t("pages.posts.totalCount", { count: data.pages[0]?.total ?? 0 })}</span>}
+        </div>
       </div>
-      <FilterBar filters={filters} onChange={(f) => { setFilters(f); resetFocus(); setPreview(null); }} />
+      <FilterBar filters={filters} onChange={(f) => { setFilters(f); resetFocus(); setPreview(null); exitSelectMode(); }} />
 
       {isLoading ? (
         <div className="flex justify-center py-20">
@@ -150,14 +205,17 @@ export default function PostsPage() {
             renderItem={(post: Post, index: number) => (
               <div
                 className="rounded-2xl transition-shadow duration-200"
-                style={focusedIndex === index ? {
+                style={!selectMode && focusedIndex === index ? {
                   boxShadow: "0 0 0 2px var(--accent-pink), 0 0 12px rgba(236, 72, 153, 0.2)",
                 } : undefined}
-                onClick={() => setFocus(index)}
+                onClick={() => !selectMode && setFocus(index)}
               >
                 <PostCard
                   post={post}
                   media={post.media || []}
+                  selectMode={selectMode}
+                  selected={selected.has(post.id)}
+                  onSelect={() => toggleSelect(post.id)}
                   onMediaClick={(m) => handleMediaClick(index, m)}
                 />
               </div>
