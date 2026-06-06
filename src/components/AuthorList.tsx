@@ -33,7 +33,7 @@ function sortAuthors(authors: Author[], key: SortKey, asc: boolean): Author[] {
         return tb - ta;
       }
       case "status": {
-        const order: Record<string, number> = { active: 0, paused: 1, error: 2 };
+        const order: Record<string, number> = { active: 0, paused: 1, archived: 2, error: 3 };
         return (order[a.status] ?? 3) - (order[b.status] ?? 3);
       }
     }

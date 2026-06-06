@@ -120,6 +120,7 @@ export const en = {
       status: {
         active: "active",
         paused: "paused",
+        archived: "archived",
         error: "error",
       },
       stats: {
@@ -131,8 +132,10 @@ export const en = {
       lastFetched: "Last fetched: {{when}}",
       fetchNow: "Fetch Now",
       fetching: "Fetching...",
-      pause: "Pause",
-      resume: "Resume",
+      archivedFetchBlocked: "Archived",
+      inactiveFetchBlocked: "Set Active to Fetch",
+      archive: "Archive",
+      activate: "Set Active",
     },
     form: {
       title: "Add Author",

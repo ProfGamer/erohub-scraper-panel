@@ -13,9 +13,11 @@ function formatCount(n: number | null | undefined): string {
 export default function AuthorCard({ author }: { author: Author }) {
   const { t } = useTranslation();
   const queryClient = useQueryClient();
+  const isActive = author.status === "active";
+  const isArchived = author.status === "archived";
   const fetchMutation = useMutation({ mutationFn: () => triggerFetch(author.id) });
   const toggleMutation = useMutation({
-    mutationFn: () => updateAuthor(author.id, { status: author.status === "active" ? "paused" : "active" }),
+    mutationFn: () => updateAuthor(author.id, { status: isActive ? "archived" : "active" }),
     onSuccess: () => queryClient.invalidateQueries({ queryKey: ["authors"] }),
   });
   const deleteMutation = useMutation({
@@ -28,7 +30,9 @@ export default function AuthorCard({ author }: { author: Author }) {
       ? { background: "var(--badge-active-bg)", color: "var(--badge-active-text)" }
       : author.status === "paused"
         ? { background: "var(--badge-paused-bg)", color: "var(--badge-paused-text)" }
-        : { background: "var(--badge-error-bg)", color: "var(--badge-error-text)" };
+        : author.status === "archived"
+          ? { background: "var(--badge-archived-bg)", color: "var(--badge-archived-text)" }
+          : { background: "var(--badge-error-bg)", color: "var(--badge-error-text)" };
 
   const profileUrl = `https://x.com/${author.username}`;
 
@@ -62,7 +66,7 @@ export default function AuthorCard({ author }: { author: Author }) {
             >
               {author.display_name || author.username}
             </a>
-            <span className="text-xs px-2 py-0.5 rounded-full flex-shrink-0" style={statusStyle}>{t(`authors.card.status.${author.status as "active" | "paused" | "error"}`)}</span>
+            <span className="text-xs px-2 py-0.5 rounded-full flex-shrink-0" style={statusStyle}>{t(`authors.card.status.${author.status as "active" | "paused" | "archived" | "error"}`)}</span>
           </div>
           <a
             href={profileUrl}
@@ -142,9 +146,13 @@ export default function AuthorCard({ author }: { author: Author }) {
       <div className="flex gap-2 mt-3">
         <button
           onClick={() => fetchMutation.mutate()}
-          disabled={fetchMutation.isPending}
+          disabled={fetchMutation.isPending || !isActive}
           className="btn-glow text-sm text-white px-3 py-1.5 rounded-lg transition-colors flex items-center gap-1.5"
-          style={{ background: "var(--gradient-primary)" }}
+          style={{
+            background: isActive ? "var(--gradient-primary)" : "var(--bg-primary)",
+            color: isActive ? "#fff" : "var(--text-muted)",
+            cursor: isActive ? "pointer" : "not-allowed",
+          }}
         >
           {fetchMutation.isPending && (
             <svg className="w-3.5 h-3.5 animate-spin" viewBox="0 0 24 24" fill="none">
@@ -152,14 +160,20 @@ export default function AuthorCard({ author }: { author: Author }) {
               <path d="M4 12a8 8 0 018-8" stroke="currentColor" strokeWidth="3" strokeLinecap="round" className="opacity-75" />
             </svg>
           )}
-          {fetchMutation.isPending ? t("authors.card.fetching") : t("authors.card.fetchNow")}
+          {fetchMutation.isPending
+            ? t("authors.card.fetching")
+            : isArchived
+              ? t("authors.card.archivedFetchBlocked")
+              : isActive
+                ? t("authors.card.fetchNow")
+                : t("authors.card.inactiveFetchBlocked")}
         </button>
         <button
           onClick={() => toggleMutation.mutate()}
           className="text-sm px-3 py-1.5 rounded-lg border transition-colors"
           style={{ borderColor: "var(--border-primary)", color: "var(--text-secondary)", background: "var(--bg-primary)" }}
         >
-          {author.status === "active" ? t("authors.card.pause") : t("authors.card.resume")}
+          {isActive ? t("authors.card.archive") : t("authors.card.activate")}
         </button>
         <button
           onClick={() => deleteMutation.mutate()}

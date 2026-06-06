@@ -122,6 +122,7 @@ export const zh = {
       status: {
         active: "活跃",
         paused: "暂停",
+        archived: "归档",
         error: "错误",
       },
       stats: {
@@ -133,8 +134,10 @@ export const zh = {
       lastFetched: "最近抓取：{{when}}",
       fetchNow: "立即抓取",
       fetching: "抓取中...",
-      pause: "暂停",
-      resume: "恢复",
+      archivedFetchBlocked: "已归档",
+      inactiveFetchBlocked: "需设为活跃",
+      archive: "归档",
+      activate: "设为活跃",
     },
     form: {
       title: "添加作者",

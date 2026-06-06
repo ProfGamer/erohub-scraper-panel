@@ -1,1 +1,298 @@
 @import "tailwindcss";
+
+/* ========== Dark Theme (Default) ========== */
+:root,
+.dark {
+  --bg-primary: #080810;
+  --bg-surface: #0f0f1a;
+  --bg-surface-hover: #161628;
+  --border-primary: #1a1a2e;
+  --border-subtle: #12121f;
+  --text-primary: #f0f0f5;
+  --text-secondary: #c0c0d0;
+  --text-muted: #606078;
+  --accent-pink: #ec4899;
+  --accent-cyan: #06b6d4;
+  --accent-pink-muted: #be185d;
+  --accent-cyan-muted: #0e7490;
+  --gradient-primary: linear-gradient(135deg, #ec4899, #06b6d4);
+  --gradient-text: linear-gradient(135deg, #ec4899, #06b6d4);
+  --sidebar-bg: #0a0a16;
+  --sidebar-active: #1a1a2e;
+  --sidebar-border: #1a1a2e;
+  --input-bg: #0f0f1a;
+  --input-border: #1a1a2e;
+  --badge-active-bg: rgba(16, 185, 129, 0.15);
+  --badge-active-text: #10b981;
+  --badge-error-bg: rgba(239, 68, 68, 0.15);
+  --badge-error-text: #ef4444;
+  --badge-paused-bg: rgba(234, 179, 8, 0.15);
+  --badge-paused-text: #eab308;
+  --badge-archived-bg: rgba(107, 114, 128, 0.18);
+  --badge-archived-text: #9ca3af;
+  --overlay-bg: rgba(0, 0, 0, 0.6);
+}
+
+/* ========== Light Theme ========== */
+.light {
+  --bg-primary: #f8f7ff;
+  --bg-surface: #ffffff;
+  --bg-surface-hover: #f0edff;
+  --border-primary: #ede9fe;
+  --border-subtle: #f3f0ff;
+  --text-primary: #1a1a2e;
+  --text-secondary: #4b5563;
+  --text-muted: #9ca3af;
+  --accent-pink: #db2777;
+  --accent-cyan: #0891b2;
+  --accent-pink-muted: #be185d;
+  --accent-cyan-muted: #0e7490;
+  --gradient-primary: linear-gradient(135deg, #db2777, #0891b2);
+  --gradient-text: linear-gradient(135deg, #db2777, #0891b2);
+  --sidebar-bg: #ffffff;
+  --sidebar-active: #f0edff;
+  --sidebar-border: #ede9fe;
+  --input-bg: #ffffff;
+  --input-border: #ede9fe;
+  --badge-active-bg: rgba(16, 185, 129, 0.1);
+  --badge-active-text: #059669;
+  --badge-error-bg: rgba(239, 68, 68, 0.1);
+  --badge-error-text: #dc2626;
+  --badge-paused-bg: rgba(234, 179, 8, 0.1);
+  --badge-paused-text: #ca8a04;
+  --badge-archived-bg: rgba(107, 114, 128, 0.12);
+  --badge-archived-text: #4b5563;
+  --overlay-bg: rgba(0, 0, 0, 0.3);
+}
+
+/* ========== Bold Theme ========== */
+.bold {
+  --bg-primary: #050508;
+  --bg-surface: #0a0a14;
+  --bg-surface-hover: #10102a;
+  --border-primary: #1a1a3a;
+  --border-subtle: #0f0f28;
+  --text-primary: #f5f5ff;
+  --text-secondary: #b0b0d0;
+  --text-muted: #7070a0;
+  --accent-pink: #ff2d8a;
+  --accent-cyan: #00f0ff;
+  --accent-pink-muted: #cc1a6a;
+  --accent-cyan-muted: #00b8cc;
+  --gradient-primary: linear-gradient(135deg, #ff2d8a, #00f0ff);
+  --gradient-text: linear-gradient(135deg, #ff2d8a, #00f0ff);
+  --sidebar-bg: #060610;
+  --sidebar-active: #10102a;
+  --sidebar-border: #1a1a3a;
+  --input-bg: #0a0a14;
+  --input-border: #1a1a3a;
+  --badge-active-bg: rgba(0, 255, 170, 0.15);
+  --badge-active-text: #00ffaa;
+  --badge-error-bg: rgba(255, 45, 138, 0.15);
+  --badge-error-text: #ff2d8a;
+  --badge-paused-bg: rgba(255, 200, 0, 0.15);
+  --badge-paused-text: #ffc800;
+  --badge-archived-bg: rgba(148, 163, 184, 0.18);
+  --badge-archived-text: #cbd5e1;
+  --overlay-bg: rgba(0, 0, 0, 0.75);
+}
+
+/* ========== Base Body Styles ========== */
+body {
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  transition: background-color 0.3s, color 0.3s;
+}
+
+/* ========== Bold Mode Extras ========== */
+
+/* Cards: neon border glow cycling pink <-> cyan */
+.bold .card-glow {
+  border-color: transparent !important;
+  background-clip: padding-box;
+  box-shadow:
+    0 0 12px rgba(255, 45, 138, 0.25),
+    0 0 40px rgba(255, 45, 138, 0.08),
+    inset 0 0 12px rgba(0, 240, 255, 0.03);
+  animation: glow-pulse 3s ease-in-out infinite alternate;
+}
+
+/* Buttons: neon breathe with scale pulse */
+.bold .btn-glow {
+  box-shadow: 0 0 8px rgba(0, 240, 255, 0.4), 0 0 20px rgba(255, 45, 138, 0.15);
+  animation: btn-breathe 2s ease-in-out infinite;
+}
+.bold .btn-glow:hover {
+  box-shadow: 0 0 16px rgba(0, 240, 255, 0.7), 0 0 40px rgba(255, 45, 138, 0.3);
+}
+
+/* Nav links: neon text glow on hover */
+.bold .nav-glow:hover {
+  text-shadow: 0 0 8px rgba(255, 45, 138, 0.8), 0 0 24px rgba(0, 240, 255, 0.5), 0 0 48px rgba(255, 45, 138, 0.2);
+}
+
+/* Sidebar: neon right-edge glow line */
+.bold aside {
+  border-right-color: transparent !important;
+  box-shadow:
+    1px 0 8px rgba(255, 45, 138, 0.3),
+    1px 0 24px rgba(0, 240, 255, 0.1);
+}
+
+/* Scrollbar styling in bold */
+.bold ::-webkit-scrollbar { width: 6px; }
+.bold ::-webkit-scrollbar-track { background: #050508; }
+.bold ::-webkit-scrollbar-thumb { background: linear-gradient(180deg, #ff2d8a, #00f0ff); border-radius: 3px; }
+
+/* Floating neon particles background */
+.bold body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background-image:
+    radial-gradient(2px 2px at 10% 15%, rgba(255, 45, 138, 0.5), transparent),
+    radial-gradient(2px 2px at 25% 55%, rgba(0, 240, 255, 0.5), transparent),
+    radial-gradient(1.5px 1.5px at 45% 25%, rgba(255, 45, 138, 0.4), transparent),
+    radial-gradient(2px 2px at 65% 75%, rgba(0, 240, 255, 0.4), transparent),
+    radial-gradient(1px 1px at 85% 35%, rgba(255, 45, 138, 0.35), transparent),
+    radial-gradient(1.5px 1.5px at 15% 85%, rgba(0, 240, 255, 0.35), transparent),
+    radial-gradient(2px 2px at 50% 10%, rgba(255, 45, 138, 0.3), transparent),
+    radial-gradient(1px 1px at 75% 50%, rgba(0, 240, 255, 0.3), transparent),
+    radial-gradient(1.5px 1.5px at 35% 90%, rgba(255, 45, 138, 0.25), transparent),
+    radial-gradient(1px 1px at 90% 20%, rgba(0, 240, 255, 0.25), transparent);
+  background-size: 100% 200%;
+  animation: float-particles 25s linear infinite;
+}
+
+/* Subtle scanline overlay */
+.bold body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(255, 45, 138, 0.015) 2px,
+    rgba(255, 45, 138, 0.015) 4px
+  );
+}
+
+/* Gradient animated border on images in bold */
+.bold img {
+  border: 1px solid rgba(255, 45, 138, 0.15);
+}
+
+/* Input fields glow on focus */
+.bold select:focus,
+.bold input:focus {
+  outline: none;
+  box-shadow: 0 0 8px rgba(0, 240, 255, 0.4), 0 0 2px rgba(255, 45, 138, 0.3);
+  border-color: rgba(0, 240, 255, 0.4) !important;
+}
+
+/* ========== Keyframes ========== */
+@keyframes glow-pulse {
+  0% {
+    box-shadow:
+      0 0 12px rgba(255, 45, 138, 0.3),
+      0 0 40px rgba(255, 45, 138, 0.1),
+      inset 0 0 12px rgba(0, 240, 255, 0.03);
+  }
+  100% {
+    box-shadow:
+      0 0 16px rgba(0, 240, 255, 0.3),
+      0 0 48px rgba(0, 240, 255, 0.1),
+      inset 0 0 16px rgba(255, 45, 138, 0.03);
+  }
+}
+
+@keyframes btn-breathe {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 8px rgba(0, 240, 255, 0.4), 0 0 20px rgba(255, 45, 138, 0.15);
+  }
+  50% {
+    transform: scale(1.02);
+    box-shadow: 0 0 16px rgba(0, 240, 255, 0.6), 0 0 40px rgba(255, 45, 138, 0.3);
+  }
+}
+
+@keyframes float-particles {
+  0% { background-position: 0% 0%; }
+  100% { background-position: 0% -200%; }
+}
+
+@keyframes flash-unlock {
+  0% { opacity: 0; transform: scale(0.8); }
+  50% { opacity: 1; transform: scale(1.1); }
+  100% { opacity: 0; transform: scale(1); }
+}
+
+/* ========== SFW Blur Mode ========== */
+.sfw-blur {
+  filter: blur(24px) brightness(0.8);
+  transition: filter 0.3s ease;
+  transform: scale(1.05);
+}
+
+.sfw-blur-container {
+  overflow: hidden;
+  position: relative;
+}
+
+.sfw-blur-container::after {
+  content: "🔒";
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  opacity: 0;
+  transition: opacity 0.2s;
+  pointer-events: none;
+  z-index: 5;
+}
+
+.sfw-blur-container:hover::after {
+  opacity: 1;
+}
+
+/* ========== Focus Teaser Float ========== */
+@keyframes teaser-float {
+  0%   { opacity: 0.8; transform: translateY(0); }
+  100% { opacity: 0; transform: translateY(-60px); }
+}
+
+.teaser-float {
+  animation: teaser-float 1.5s ease-out forwards;
+  pointer-events: none;
+}
+
+/* ========== Tailwind Theme Extensions ========== */
+@theme {
+  --animate-shimmer: shimmer 1.5s ease-in-out infinite;
+  --animate-indeterminate: indeterminate 1.5s ease-in-out infinite;
+  --animate-fade-out: fadeOut 3s ease-in-out forwards;
+}
+
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(200%); }
+}
+
+@keyframes indeterminate {
+  0% { width: 20%; transform: translateX(-100%); }
+  50% { width: 40%; }
+  100% { width: 20%; transform: translateX(400%); }
+}
+
+@keyframes fadeOut {
+  0%, 70% { opacity: 1; }
+  100% { opacity: 0; }
+}
