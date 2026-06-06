@@ -15,3 +15,6 @@ export const updateGroup = (
 ) => api.put<Group>(`/groups/${id}`, data).then((r) => r.data);
 
 export const deleteGroup = (id: number) => api.delete(`/groups/${id}`);
+
+export const triggerGroupFetch = (id: number) =>
+  api.post(`/groups/${id}/fetch`);
